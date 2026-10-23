@@ -1,0 +1,19 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Environments
+venv/
+env/
+ENV/
+.env
+
+# Model check & Large zip downloads
+data/*.zip
+
+# OS artifacts
+.DS_Store
+Thumbs.db

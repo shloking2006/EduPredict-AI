@@ -1,0 +1,110 @@
+{
+  "best_model_name": "Gradient Boosting",
+  "best_params": {
+    "classifier__learning_rate": 0.05,
+    "classifier__max_depth": 3,
+    "classifier__n_estimators": 100
+  },
+  "cv_results": {
+    "Random Forest": {
+      "cv_mean": 0.8574900793650793,
+      "cv_std": 0.02063134317279491,
+      "cv_scores": [
+        0.890625,
+        0.8253968253968254,
+        0.8571428571428571,
+        0.8571428571428571,
+        0.8571428571428571
+      ]
+    },
+    "SVM": {
+      "cv_mean": 0.7909722222222222,
+      "cv_std": 0.051100033922378434,
+      "cv_scores": [
+        0.84375,
+        0.746031746031746,
+        0.8253968253968254,
+        0.8253968253968254,
+        0.7142857142857143
+      ]
+    },
+    "Gradient Boosting": {
+      "cv_mean": 0.8892361111111111,
+      "cv_std": 0.01740187957010494,
+      "cv_scores": [
+        0.890625,
+        0.9206349206349206,
+        0.873015873015873,
+        0.873015873015873,
+        0.8888888888888888
+      ]
+    }
+  },
+  "test_results": {
+    "Random Forest": {
+      "accuracy": 0.8860759493670886,
+      "precision": 0.8906778075699943,
+      "recall": 0.8860759493670886,
+      "f1_score": 0.886842063779813
+    },
+    "SVM": {
+      "accuracy": 0.8227848101265823,
+      "precision": 0.8367692759692297,
+      "recall": 0.8227848101265823,
+      "f1_score": 0.8197390756098745
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.8734177215189873,
+      "precision": 0.8760297367892306,
+      "recall": 0.8734177215189873,
+      "f1_score": 0.8740512664563299
+    }
+  },
+  "optimized_test_results": {
+    "accuracy": 0.8987341772151899,
+    "precision": 0.8987341772151899,
+    "recall": 0.8987341772151899,
+    "f1_score": 0.8987341772151899
+  },
+  "feature_names": [
+    "school",
+    "sex",
+    "address",
+    "famsize",
+    "Pstatus",
+    "Mjob",
+    "Fjob",
+    "reason",
+    "guardian",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "nursery",
+    "higher",
+    "internet",
+    "romantic",
+    "age",
+    "Medu",
+    "Fedu",
+    "traveltime",
+    "studytime",
+    "failures",
+    "famrel",
+    "freetime",
+    "goout",
+    "Dalc",
+    "Walc",
+    "health",
+    "absences",
+    "G1",
+    "G2"
+  ],
+  "class_labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "train_size": 316,
+  "test_size": 79
+}

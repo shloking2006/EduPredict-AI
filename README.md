@@ -1,0 +1,196 @@
+# 🎓 EduPredict AI — Student Performance Prediction System
+
+**AIML Assignment No. 12 | Third Year Information Technology | SPPU 2024 Pattern**
+
+> Predict student academic performance using machine learning and identify students who may need academic support.
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Technology Stack](#technology-stack)
+- [Project Structure](#project-structure)
+- [Setup & Installation](#setup--installation)
+- [Running the Project](#running-the-project)
+- [Model Details](#model-details)
+- [Results](#results)
+- [Running Tests](#running-tests)
+- [Screenshots](#screenshots)
+- [Disclaimer](#disclaimer)
+
+---
+
+## Overview
+
+EduPredict AI is a machine learning system that predicts student academic performance based on demographic, social, and academic factors. It uses the **UCI Student Performance Dataset** to train classification models that categorize students into three performance levels:
+
+| Category | Grade Range (G3) | Risk Level |
+|----------|-----------------|------------|
+| 🔴 Low | 0 – 9 | High Risk — needs academic support |
+| 🟡 Medium | 10 – 14 | Moderate Risk — average performance |
+| 🟢 High | 15 – 20 | Low Risk — performing well |
+
+## Technology Stack
+
+| Component | Technology |
+|-----------|------------|
+| Language | Python 3.12 |
+| Data Processing | Pandas, NumPy |
+| Machine Learning | Scikit-learn |
+| Visualization | Matplotlib, Seaborn |
+| Web Dashboard | Streamlit |
+| Model Persistence | Joblib |
+| Testing | Pytest |
+
+## Project Structure
+
+```
+EduPredict-AI/
+├── app.py                    # Streamlit dashboard
+├── train_model.py            # Model training script
+├── src/
+│   ├── __init__.py
+│   ├── data_loader.py        # Dataset loading & info
+│   ├── preprocessing.py      # Data cleaning & pipeline
+│   ├── model_training.py     # Train & compare models
+│   ├── evaluation.py         # Metrics & charts
+│   └── predictor.py          # Prediction & risk assessment
+├── models/
+│   ├── best_model.joblib     # Trained model pipeline
+│   ├── model_metadata.joblib # Model metrics & config
+│   └── model_metadata.json   # Human-readable metrics
+├── data/
+│   └── student-mat.csv       # UCI Student Performance dataset
+├── charts/                   # Generated evaluation charts
+├── tests/
+│   ├── test_preprocessing.py # Preprocessing tests
+│   └── test_predictor.py     # Prediction tests
+├── requirements.txt
+├── DATASET_INFO.md           # Dataset documentation
+├── PROJECT_REPORT.md         # Detailed project report
+└── README.md                 # This file
+```
+
+## Setup & Installation
+
+### Prerequisites
+- Python 3.10 or higher
+- pip (Python package manager)
+- Windows 10/11 (tested), also works on macOS/Linux
+
+### Step-by-Step Instructions (Windows 11)
+
+1. **Open PowerShell** (or Command Prompt)
+
+2. **Navigate to the project folder:**
+   ```powershell
+   cd C:\Users\shlok\.gemini\antigravity\scratch\EduPredict-AI
+   ```
+
+3. **(Optional) Create a virtual environment:**
+   ```powershell
+   python -m venv venv
+   .\venv\Scripts\Activate
+   ```
+
+4. **Install dependencies:**
+   ```powershell
+   pip install -r requirements.txt
+   ```
+
+5. **Download the dataset** (automatic during training):
+   The dataset is already included in the `data/` folder. If missing, the training script
+   will guide you to download it from UCI ML Repository.
+
+## Running the Project
+
+### Step 1: Train the Model
+
+```powershell
+$env:PYTHONIOENCODING='utf-8'
+python train_model.py
+```
+
+This will:
+- Load and clean the dataset
+- Train 3 ML models (Random Forest, SVM, Gradient Boosting)
+- Compare models using 5-fold cross-validation
+- Optimize the best model's hyperparameters
+- Save the model, metrics, and evaluation charts
+
+### Step 2: Launch the Dashboard
+
+```powershell
+streamlit run app.py
+```
+
+The dashboard will open at **http://localhost:8501** in your browser.
+
+### Step 3: Run Tests
+
+```powershell
+$env:PYTHONIOENCODING='utf-8'
+python -m pytest tests/ -v
+```
+
+## Model Details
+
+### Models Compared
+
+1. **Random Forest Classifier** — Ensemble of decision trees with bagging
+2. **Support Vector Machine (SVC)** — Finds optimal decision boundary in high-dimensional space
+3. **Gradient Boosting Classifier** — Sequential ensemble that corrects previous errors
+
+### Methodology
+
+1. Data split: 80% training / 20% testing (stratified)
+2. Preprocessing: StandardScaler (numerical) + OneHotEncoder (categorical)
+3. Model selection: 5-fold cross-validation on training set
+4. Hyperparameter optimization: GridSearchCV on best model
+5. Final evaluation: Held-out test set (never seen during training)
+
+### Avoiding Data Leakage
+
+- All preprocessing is inside an `sklearn.Pipeline`, so scaling and encoding are fitted only on training data
+- Cross-validation folds are independent
+- Test set is used only for final evaluation, never for model selection
+
+## Results
+
+See the `models/model_metadata.json` file for actual numerical results generated by the training script. Results are NOT fabricated — they are produced by running the models on the real UCI dataset.
+
+## Running Tests
+
+```powershell
+# Run all tests with verbose output
+$env:PYTHONIOENCODING='utf-8'
+python -m pytest tests/ -v
+
+# Run only preprocessing tests
+python -m pytest tests/test_preprocessing.py -v
+
+# Run only predictor tests
+python -m pytest tests/test_predictor.py -v
+```
+
+## Screenshots
+
+After running the dashboard (`streamlit run app.py`), capture screenshots of:
+1. Home page with model metrics
+2. Prediction form and result
+3. Model evaluation charts
+4. Data visualizations
+5. Dataset overview
+
+*(Add your screenshots here for the project submission)*
+
+## Disclaimer
+
+⚠️ **Important:** Predictions made by this system are statistical estimates based on historical data patterns from Portuguese schools. They are NOT guarantees of actual student performance. Many factors beyond this model's scope influence academic outcomes. This tool should be used as one of many inputs for academic guidance decisions, not as a sole determinant.
+
+---
+
+**Course:** Artificial Intelligence & Machine Learning  
+**University:** Savitribai Phule Pune University (SPPU), 2024 Pattern  
+**Year:** Third Year Information Technology
